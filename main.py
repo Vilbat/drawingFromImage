@@ -58,6 +58,8 @@ if __name__ == '__main__':
     sizeY = len(drawn_image)
     sizeX = len(drawn_image[0])
 
+    # Potentially make image more pixelated
+
     for y in range(0, sizeY):
         pixelY = y
         for x in range(0, sizeX):
