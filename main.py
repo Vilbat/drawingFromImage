@@ -39,19 +39,27 @@ def create_line_drawing_image(img):
     # return img_diff
 
 
-def convert_images(dir_from, dir_to):
+def convert_images(dir_from):
     for file_name in os.listdir(dir_from):
         print(file_name)
         if file_name.endswith('.jpg'):
             print(file_name)
             img = cv2.imread(os.path.join(dir_from, file_name))
             img_contour = create_line_drawing_image(img)
-            cv2.imwrite(os.path.join(dir_to, file_name), img_contour)
+            return img_contour
+            # cv2.imwrite(os.path.join(dir_to, file_name), img_contour)
 
 
 if __name__ == '__main__':
     dirIMG = 'images/source'
-    dirDEST = 'images/output'
-    convert_images(dirIMG, dirDEST)
+    drawn_image = convert_images(dirIMG)
 
+    # Go through all pixels
+    sizeY = len(drawn_image)
+    sizeX = len(drawn_image[0])
 
+    for y in range(0, sizeY):
+        pixelY = y
+        for x in range(0, sizeX):
+            pixelX = x
+            # Go to pixel y and x and draw
